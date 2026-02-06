@@ -1,0 +1,451 @@
+/* ========================================
+   Valentine's Interactive Story Game
+   ======================================== */
+
+:root {
+  --dialogue-bg: rgba(20, 10, 30, 0.92);
+  --dialogue-border: rgba(255, 182, 193, 0.4);
+  --text-color: #fff;
+  --accent-pink: #ff6b9d;
+  --accent-gold: #ffd700;
+  --transition-speed: 0.4s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ========================================
+   Game Container
+   ======================================== */
+#game-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #1a0a1a;
+  overflow: hidden;
+}
+
+/* ========================================
+   Background Layer
+   ======================================== */
+#background-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: opacity var(--transition-speed) ease-in-out;
+}
+
+#background-layer.fade-out {
+  opacity: 0;
+}
+
+/* Scene Indicator (for placeholder mode) */
+#scene-indicator {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  z-index: 50;
+  backdrop-filter: blur(5px);
+}
+
+/* ========================================
+   Placeholder Background Gradients
+   (Replace with real images later)
+   ======================================== */
+.bg-volunteer {
+  background: linear-gradient(135deg, #87CEEB 0%, #98FB98 50%, #F0E68C 100%) !important;
+}
+
+.bg-ice-cream-stand {
+  background: linear-gradient(180deg, #FFB6C1 0%, #FFDAB9 50%, #FFF8DC 100%) !important;
+}
+
+.bg-ice-cream-alone {
+  background: linear-gradient(180deg, #E6E6FA 0%, #FFB6C1 50%, #FFDAB9 100%) !important;
+}
+
+.bg-eating-area {
+  background: linear-gradient(135deg, #90EE90 0%, #F5DEB3 50%, #DEB887 100%) !important;
+}
+
+.bg-ice-cream-friends {
+  background: linear-gradient(180deg, #FFB6C1 0%, #FF69B4 30%, #FFDAB9 100%) !important;
+}
+
+.bg-home-texting {
+  background: linear-gradient(180deg, #191970 0%, #2F2F4F 50%, #4B0082 100%) !important;
+}
+
+.bg-bike-ride {
+  background: linear-gradient(135deg, #87CEEB 0%, #98FB98 50%, #FFD700 100%) !important;
+}
+
+.bg-video-call {
+  background: linear-gradient(180deg, #4B0082 0%, #8B008B 50%, #FF69B4 100%) !important;
+}
+
+.bg-christmas {
+  background: linear-gradient(180deg, #228B22 0%, #DC143C 50%, #FFD700 100%) !important;
+}
+
+.bg-valentine {
+  background: linear-gradient(180deg, #FF69B4 0%, #FF1493 50%, #FFB6C1 100%) !important;
+}
+
+/* ========================================
+   Hotspot Interactive Elements
+   ======================================== */
+.hotspot {
+  position: absolute;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: rgba(255, 107, 157, 0.05);
+}
+
+.hotspot:hover {
+  border-color: var(--accent-pink);
+  background: rgba(255, 107, 157, 0.15);
+  box-shadow:
+    0 0 20px rgba(255, 107, 157, 0.4),
+    0 0 40px rgba(255, 107, 157, 0.2),
+    inset 0 0 20px rgba(255, 107, 157, 0.1);
+  transform: scale(1.02);
+}
+
+.hotspot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background: var(--accent-pink);
+  border-radius: 50%;
+  opacity: 0;
+  animation: pulse 2s infinite;
+}
+
+.hotspot:hover::after {
+  opacity: 0.6;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   Dialogue Box
+   ======================================== */
+#dialogue-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 40px 30px;
+  background: var(--dialogue-bg);
+  border-top: 1px solid var(--dialogue-border);
+  backdrop-filter: blur(10px);
+  transform: translateY(100%);
+  transition: transform var(--transition-speed) ease;
+}
+
+#dialogue-container.visible {
+  transform: translateY(0);
+}
+
+#speaker-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent-pink);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#dialogue-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  min-height: 60px;
+}
+
+#dialogue-text .cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--accent-pink);
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+#click-indicator {
+  position: absolute;
+  bottom: 10px;
+  right: 40px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+#click-indicator.visible {
+  opacity: 1;
+  animation: bounce-arrow 1s infinite;
+}
+
+@keyframes bounce-arrow {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* ========================================
+   Choice Buttons
+   ======================================== */
+#choices-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.choice-btn {
+  padding: 12px 40px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-color);
+  background: rgba(255, 107, 157, 0.2);
+  border: 2px solid var(--accent-pink);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.choice-btn:hover {
+  background: var(--accent-pink);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 107, 157, 0.5);
+}
+
+.choice-btn.yes-btn:hover {
+  background: #4ade80;
+  border-color: #4ade80;
+  box-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
+}
+
+.choice-btn.no-btn:hover {
+  background: #f87171;
+  border-color: #f87171;
+  box-shadow: 0 0 20px rgba(248, 113, 113, 0.5);
+}
+
+/* ========================================
+   Thought Bubble (MC Internal Thoughts)
+   ======================================== */
+#thought-bubble {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 500px;
+  padding: 30px 40px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #333;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+#thought-bubble::before {
+  content: '💭';
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+}
+
+#thought-bubble.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ========================================
+   Transition Overlays
+   ======================================== */
+#fade-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  z-index: 100;
+}
+
+#fade-overlay.active {
+  opacity: 1;
+}
+
+#time-skip-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  z-index: 101;
+}
+
+#time-skip-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#time-skip-text {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--text-color);
+  letter-spacing: 3px;
+  text-align: center;
+  animation: fadeInText 1s ease forwards;
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   Ending Screens
+   ======================================== */
+#ending-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a0a1a 0%, #2d1f3d 100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 200;
+  transition: opacity 0.8s ease;
+}
+
+#ending-screen.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#ending-screen h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+#ending-screen p {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 768px) {
+  #dialogue-container {
+    padding: 15px 20px 20px;
+  }
+
+  #dialogue-text {
+    font-size: 1rem;
+  }
+
+  .choice-btn {
+    padding: 10px 25px;
+    font-size: 1rem;
+  }
+
+  #time-skip-text {
+    font-size: 1.8rem;
+  }
+}
