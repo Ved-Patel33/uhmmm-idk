@@ -352,5 +352,5 @@ class GameEngine {
 // Initialize game when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   window.game = new GameEngine();
-  window.game.loadScene('scene1');
+  window.game.loadScene('intro');
 });

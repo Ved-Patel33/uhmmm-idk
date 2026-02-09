@@ -15,14 +15,29 @@
 
 window.SCENES = {
     // ==========================================
+    // Intro Scene: Title & Setup
+    // ==========================================
+    intro: {
+        backgroundClass: 'bg-intro',
+        label: '💕 A Valentine\'s Story',
+        dialogue: [
+            { speaker: '', text: 'This is a story about how two people met...' },
+            { speaker: '', text: 'It all started at a volunteer event at the Mandir.' },
+            { speaker: '', text: 'Little did he know, this day would change everything.' },
+            { speaker: '', text: '(Click to continue...)' }
+        ],
+        nextScene: 'scene1'
+    },
+
+    // ==========================================
     // Scene 1: Volunteer Event (Open Space)
     // ==========================================
     scene1: {
         backgroundClass: 'bg-volunteer',
-        label: '🌳 Volunteer Event - Open Space',
+        label: '🌳 Mandir - Open Space',
         dialogue: [
             { speaker: '', text: 'I need to choose a stand to help at...' },
-            { speaker: '', text: '(Click the glowing area in the top-left to select the ice cream stand)' }
+            { speaker: '', text: '(Click the ice cream stand in the top-left to select the ice cream stand)' }
         ],
         hotspots: [
             {
@@ -42,11 +57,11 @@ window.SCENES = {
     scene2: {
         backgroundClass: 'bg-ice-cream-stand',
         label: '🍦 Ice Cream Stand - Behind the Counter',
-        thought: "I need to tell this girl I can take over… but she looks so excited… she's really pretty.",
+        thought: "I need to tell this girl I can take over… she looks so excited… she's really pretty.",
         dialogue: [
-            { speaker: 'Girl', text: 'Oh, are you taking over?' },
+            { speaker: 'Girl', text: 'Oh.... are you taking over?' },
             { speaker: 'You', text: 'Yeah.' },
-            { speaker: 'Girl', text: "Okay! It's pretty easy, just scoop and serve. Good luck!" }
+            { speaker: 'Girl', text: "Okayyy...ughh here you go." }
         ],
         nextScene: 'scene3'
     },
@@ -58,7 +73,7 @@ window.SCENES = {
         backgroundClass: 'bg-ice-cream-alone',
         label: '🍦 Ice Cream Stand - Working Alone',
         dialogue: [
-            { speaker: '', text: "Alright, I got this. Just me and the ice cream now." }
+            { speaker: '', text: "Daym, there are a lot of people here." }
         ],
         autoAdvance: 6000,
         nextScene: 'scene3b'
@@ -68,9 +83,12 @@ window.SCENES = {
         backgroundClass: 'bg-ice-cream-alone',
         label: '🍦 Ice Cream Stand - Unexpected Visitors',
         dialogue: [
-            { speaker: 'Girls', text: "Hey! Our friend thought you were cute and wanted your Snap." },
+            { speaker: 'Girls', text: "Hey.. do you mind comming to the side for a bit?" },
             { speaker: 'You', text: "Oh, uh... sure, I guess?" },
-            { speaker: '', text: "That was random... anyway, back to work." }
+            { speaker: 'Girls', text: "Our friend thought you were cute and wanted your Snap." },
+            { speaker: 'You', text: "Oh, uhmm do I get a discription of her?" },
+            { speaker: 'Girls', text: "She's got two eyes and a nose, she wears glasses but has contacts too" },
+            { speaker: 'You', text: "hehehe,sure" }
         ],
         nextScene: 'scene4'
     },
@@ -82,13 +100,11 @@ window.SCENES = {
         backgroundClass: 'bg-eating-area',
         label: '🍽️ Eating Area - Break Time',
         dialogue: [
-            { speaker: '', text: "Time for a break. This food actually looks pretty good." },
-            { speaker: 'Girl', text: "Hey! Mind if I sit here?" },
-            { speaker: 'You', text: "Oh, hey! Yeah, go ahead." },
-            { speaker: 'Girl', text: "How's the stand going?" },
-            { speaker: 'You', text: "Pretty good. Got some interesting customers." },
-            { speaker: 'Girl', text: "Haha, I bet. Well, I gotta get back. See you around!" },
-            { speaker: 'You', text: "Yeah, see you." }
+            { speaker: '', text: "Finally dinner time." },
+            { speaker: 'Girl', text: "Heyy!" },
+            { speaker: 'You', text: "Oh, hey...ugh how are you?" },
+            { speaker: 'Girl', text: "Good, how are you?" },
+            { speaker: 'GameMaker', text: "Basically small talk happens" }
         ],
         nextScene: 'scene5'
     },
@@ -100,12 +116,11 @@ window.SCENES = {
         backgroundClass: 'bg-ice-cream-friends',
         label: '🍦 Ice Cream Stand - She Returns',
         dialogue: [
-            { speaker: '', text: "She's back, and she brought her friends." },
-            { speaker: 'Girl', text: "We couldn't resist coming back for more ice cream!" },
-            { speaker: 'You', text: "Business is booming then." },
-            { speaker: 'Friend', text: "You're pretty good at this!" },
-            { speaker: 'You', text: "Thanks, I try." },
-            { speaker: 'Girl', text: "We should hang out sometime. Here's my number." }
+            { speaker: '', text: "You go get some ice cream" },
+            { speaker: 'Girl', text: "Oh, hii" },
+            { speaker: 'You', text: "Hey.. I see you took over the stand lol" },
+            { speaker: 'Girl', text: "Hehe, yea" },
+            { speaker: 'GameMaker', text: "More small talk" }
         ],
         nextScene: 'scene6'
     },
@@ -119,13 +134,29 @@ window.SCENES = {
         timeSkip: 'Later that night...',
         dialogue: [
             { speaker: '', text: "Should I text her? ...Yeah, why not." },
-            { speaker: 'You (text)', text: "Hey, it's the ice cream guy 🍦" },
-            { speaker: 'Her (text)', text: "Haha hey! Took you long enough 😊" },
-            { speaker: 'You (text)', text: "Had to make sure the ice cream wouldn't melt first" },
-            { speaker: 'Her (text)', text: "Smooth 😂 We should hang out soon!" },
-            { speaker: '', text: "This is going well..." }
+            { speaker: 'You (text)', text: "Hey, where'd you go I was looking for you" },
+            { speaker: 'Her (text)', text: "Haha hey, I had to go home" },
+            { speaker: 'You (text)', text: "Oh bummer, wyd?" },
+            { speaker: 'Her (text)', text: "Nothing much, just chilling" },
+            { speaker: 'GameMaker', text: "They proceed to text for a while, talking abt intrests and stff" }
         ],
         nextScene: 'scene7'
+    },
+    // ==========================================
+    // Scene 6.5: Montreal
+    // ==========================================
+    scene7: {
+        backgroundClass: 'bg-home-texting',
+        label: 'Montreal Snap Spree',
+        timeSkip: 'A few weeks later...',
+        dialogue: [
+            { speaker: 'GameMaker', text: "The guy went on a trip with his freinds and may have gotten drunk" },
+            { speaker: 'You', text: "Mmm I sholddd Snappp herrs" },
+            { speaker: 'GameMaker', text: "He sent like 70 snaps" },
+            { speaker: 'Her', text: "wowww thtat was a lot of snaps" },
+            { speaker: 'GameMaker', text: "Congraduations you somehow got her number" }
+        ],
+        nextScene: 'scene8'
     },
 
     // ==========================================
@@ -137,12 +168,11 @@ window.SCENES = {
         timeSkip: 'A few weeks later...',
         dialogue: [
             { speaker: '', text: "Just a casual bike ride... and she's calling." },
-            { speaker: 'Her (call)', text: "Hey! What are you up to?" },
+            { speaker: 'Her', text: "Hey! What are you up to?" },
             { speaker: 'You', text: "Just biking around. You?" },
-            { speaker: 'Her (call)', text: "Missing you, honestly." },
-            { speaker: 'You', text: "...Same here." },
-            { speaker: 'Her (call)', text: "We should video call later tonight!" },
-            { speaker: 'You', text: "Definitely." }
+            { speaker: 'Her', text: "Just go to the apartment, unpacking" },
+            { speaker: 'You', text: "oooo" },
+            { speaker: 'GameMaker', text: "They ended up talking and stuff" }
         ],
         nextScene: 'scene8'
     },
@@ -155,22 +185,23 @@ window.SCENES = {
         label: '📹 Video Call - The Reveal',
         timeSkip: 'A few months later...',
         dialogue: [
-            { speaker: 'Her', text: "Okay okay, close your eyes!" },
-            { speaker: 'You', text: "They're closed!" },
-            { speaker: 'Her', text: "Okay... open them!" }
+            { speaker: 'Her', text: "Yea were gonna dress up as disney princesses" },
+            { speaker: 'You', text: "Oh reallyyy, what princes r u gonna be" },
+            { speaker: 'GameMaker', text: "Honestly dont remember if you told me or not until the day" }
         ],
         nextScene: 'scene8b'
     },
 
     scene8b: {
         backgroundClass: 'bg-video-call',
-        label: '📹 Video Call - Beauty and the Beast',
-        thought: "She's wearing a Beauty and the Beast costume... She looks absolutely beautiful. Like, actually stunning. I can't believe someone this amazing wants to talk to me every day.",
+        label: '📹 Video Call - Halloween',
+        thought: "She's wearing a Beauty and the Beast costume... She looks absolutely beautiful. Like, actually stunning.",
         dialogue: [
-            { speaker: 'You', text: "Wow... you look incredible." },
-            { speaker: 'Her', text: "Really? You think so?" },
-            { speaker: 'You', text: "Absolutely. You're beautiful." },
-            { speaker: 'Her', text: "...Thank you. That means a lot." }
+            { speaker: 'Her', text: "Soooo, what do you think?" },
+            { speaker: 'You', text: "....You look incredible" },
+            { speaker: 'You', text: "You're beautiful......" },
+            { speaker: 'Her', text: "hehehehehe, Thank you." },
+            { speaker: 'GameMaker', text: "You proceed to talk for a while" }
         ],
         nextScene: 'scene9'
     },
@@ -183,13 +214,13 @@ window.SCENES = {
         label: '🎄 Christmas Day - The Gift',
         timeSkip: 'Christmas Day...',
         dialogue: [
-            { speaker: 'You', text: "I got you something." },
-            { speaker: 'Her', text: "You didn't have to!" },
-            { speaker: 'You', text: "I wanted to. Open it!" },
-            { speaker: 'Her', text: "OH MY GOD A WOODLAND COW PLUSHIE!" },
-            { speaker: 'Her', text: "I LOVE IT SO MUCH!! Thank you!!" },
-            { speaker: 'You', text: "I'm glad you like it." },
-            { speaker: 'Her', text: "Like it? I LOVE it. And I love... spending time with you." }
+            { speaker: 'Her', text: "Why did I get this???" },
+            { speaker: 'Her', text: "YWhen did I order this??" },
+            { speaker: 'her', text: "OOO, this is what you were tallking aboutttt" },
+            { speaker: 'You', text: "hehehe yea, i was worried it wasnt gonna come but suprise!" },
+            { speaker: 'Her', text: "hehehehehe, thank you." },
+            { speaker: 'You', text: "It's sadly not exactly what it shouldve been but....." },
+            { speaker: 'Her', text: "it's okayy, i like it" }
         ],
         nextScene: 'sceneFinal'
     },
@@ -199,12 +230,12 @@ window.SCENES = {
     // ==========================================
     sceneFinal: {
         backgroundClass: 'bg-valentine',
-        label: "💕 Valentine's Day - The Question",
-        timeSkip: "Valentine's Day...",
+        label: "The Question",
+        timeSkip: "A Week Before Valentine's Day...",
         dialogue: [
             { speaker: '', text: "(You're now seeing this from her perspective...)" },
             { speaker: 'Him', text: "So... I have something to ask you." },
-            { speaker: '', text: "My heart is racing..." },
+            { speaker: '', text: "You're wondering what he's gonna ask..." },
             { speaker: 'Him', text: "Will you be my Valentine? 💕" },
             {
                 speaker: '',
