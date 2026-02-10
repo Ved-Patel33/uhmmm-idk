@@ -18,7 +18,7 @@ window.SCENES = {
     // Intro Scene: Title & Setup
     // ==========================================
     intro: {
-        backgroundClass: 'bg-intro',
+        background: 'assets/intro.png',
         label: '💕 A Valentine\'s Story',
         dialogue: [
             { speaker: '', text: 'This is a story about how two people met...' },
@@ -33,7 +33,7 @@ window.SCENES = {
     // Scene 1: Volunteer Event (Open Space)
     // ==========================================
     scene1: {
-        backgroundClass: 'bg-volunteer',
+        background: 'assets/mandir_open_space.png',
         label: '🌳 Mandir - Open Space',
         dialogue: [
             { speaker: '', text: 'I need to choose a stand to help at...' },
@@ -55,7 +55,7 @@ window.SCENES = {
     // Scene 2: Ice Cream Stand (Behind the Counter)
     // ==========================================
     scene2: {
-        backgroundClass: 'bg-ice-cream-stand',
+        background: 'assets/ice_cream_stand.png',
         label: '🍦 Ice Cream Stand - Behind the Counter',
         thought: "I need to tell this girl I can take over… she looks so excited… she's really pretty.",
         dialogue: [
@@ -70,7 +70,7 @@ window.SCENES = {
     // Scene 3: Ice Cream Stand (MC Alone)
     // ==========================================
     scene3: {
-        backgroundClass: 'bg-ice-cream-alone',
+        background: 'assets/ice_cream_stand.png',
         label: '🍦 Ice Cream Stand - Working Alone',
         dialogue: [
             { speaker: '', text: "Daym, there are a lot of people here." }
@@ -80,7 +80,7 @@ window.SCENES = {
     },
 
     scene3b: {
-        backgroundClass: 'bg-ice-cream-alone',
+        background: 'assets/ice_cream_stand.png',
         label: '🍦 Ice Cream Stand - Unexpected Visitors',
         dialogue: [
             { speaker: 'Girls', text: "Hey.. do you mind comming to the side for a bit?" },
@@ -97,7 +97,7 @@ window.SCENES = {
     // Scene 4: Eating Area
     // ==========================================
     scene4: {
-        backgroundClass: 'bg-eating-area',
+        background: 'assets/eating_area.png',
         label: '🍽️ Eating Area - Break Time',
         dialogue: [
             { speaker: '', text: "Finally dinner time." },
@@ -113,7 +113,7 @@ window.SCENES = {
     // Scene 5: Ice Cream Stand (Main Girl & Friends)
     // ==========================================
     scene5: {
-        backgroundClass: 'bg-ice-cream-friends',
+        background: 'assets/ice_cream_stand.png',
         label: '🍦 Ice Cream Stand - She Returns',
         dialogue: [
             { speaker: '', text: "You go get some ice cream" },
@@ -129,7 +129,7 @@ window.SCENES = {
     // Scene 6: At Home (Texting)
     // ==========================================
     scene6: {
-        backgroundClass: 'bg-home-texting',
+        background: 'assets/bedroom_night.png',
         label: '📱 At Home - Late Night Texting',
         timeSkip: 'Later that night...',
         dialogue: [
@@ -140,13 +140,13 @@ window.SCENES = {
             { speaker: 'Her (text)', text: "Nothing much, just chilling" },
             { speaker: 'GameMaker', text: "They proceed to text for a while, talking abt intrests and stff" }
         ],
-        nextScene: 'scene7'
+        nextScene: 'scene6b'
     },
     // ==========================================
     // Scene 6.5: Montreal
     // ==========================================
-    scene7: {
-        backgroundClass: 'bg-home-texting',
+    scene6b: {
+        background: 'assets/bedroom_night.png',
         label: 'Montreal Snap Spree',
         timeSkip: 'A few weeks later...',
         dialogue: [
@@ -156,14 +156,14 @@ window.SCENES = {
             { speaker: 'Her', text: "wowww thtat was a lot of snaps" },
             { speaker: 'GameMaker', text: "Congraduations you somehow got her number" }
         ],
-        nextScene: 'scene8'
+        nextScene: 'scene7'
     },
 
     // ==========================================
     // Scene 7: Bike Ride / Video Call
     // ==========================================
     scene7: {
-        backgroundClass: 'bg-bike-ride',
+        background: 'assets/bike_ride.png',
         label: '🚴 Bike Ride - Her Call',
         timeSkip: 'A few weeks later...',
         dialogue: [
@@ -181,7 +181,7 @@ window.SCENES = {
     // Scene 8: Costume Reveal (Video Call)
     // ==========================================
     scene8: {
-        backgroundClass: 'bg-video-call',
+        background: 'assets/video_call_costume.png',
         label: '📹 Video Call - The Reveal',
         timeSkip: 'A few months later...',
         dialogue: [
@@ -193,7 +193,7 @@ window.SCENES = {
     },
 
     scene8b: {
-        backgroundClass: 'bg-video-call',
+        background: 'assets/video_call_costume.png',
         label: '📹 Video Call - Halloween',
         thought: "She's wearing a Beauty and the Beast costume... She looks absolutely beautiful. Like, actually stunning.",
         dialogue: [
@@ -210,7 +210,7 @@ window.SCENES = {
     // Scene 9: Christmas Gift
     // ==========================================
     scene9: {
-        backgroundClass: 'bg-christmas',
+        background: 'assets/christmas_gift.png',
         label: '🎄 Christmas Day - The Gift',
         timeSkip: 'Christmas Day...',
         dialogue: [
@@ -229,7 +229,7 @@ window.SCENES = {
     // Final Scene: Valentine's Question
     // ==========================================
     sceneFinal: {
-        backgroundClass: 'bg-valentine',
+        background: 'assets/valentine_proposal.png',
         label: "The Question",
         timeSkip: "A Week Before Valentine's Day...",
         dialogue: [
