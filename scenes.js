@@ -37,7 +37,7 @@ window.SCENES = {
         label: '🌳 Mandir - Open Space',
         dialogue: [
             { speaker: '', text: 'I need to choose a stand to help at...' },
-            { speaker: '', text: '(Click the ice cream stand in the top-left to select the ice cream stand)' }
+            { speaker: '', text: '(Click the ice cream stand in the bottem-left to select the ice cream stand)' }
         ],
         hotspots: [
             {
@@ -55,7 +55,7 @@ window.SCENES = {
     // Scene 2: Ice Cream Stand (Behind the Counter)
     // ==========================================
     scene2: {
-        background: 'assets/ice_cream_stand.png',
+        background: 'assets/ice_cream_stand_fantasy.png',
         character: 'assets/char_female_lead.png',
         label: '🍦 Ice Cream Stand - Behind the Counter',
         thought: "I need to tell this girl I can take over… she looks so excited… she's really pretty.",
