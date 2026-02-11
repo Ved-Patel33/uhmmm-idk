@@ -42,8 +42,8 @@ window.SCENES = {
         hotspots: [
             {
                 x: '5%',
-                y: '10%',
-                width: '25%',
+                y: '60%',
+                width: '30%',
                 height: '35%',
                 target: 'scene2'
             }
@@ -56,6 +56,7 @@ window.SCENES = {
     // ==========================================
     scene2: {
         background: 'assets/ice_cream_stand.png',
+        character: 'assets/char_female_lead.png',
         label: '🍦 Ice Cream Stand - Behind the Counter',
         thought: "I need to tell this girl I can take over… she looks so excited… she's really pretty.",
         dialogue: [
@@ -114,6 +115,7 @@ window.SCENES = {
     // ==========================================
     scene5: {
         background: 'assets/ice_cream_stand.png',
+        character: 'assets/char_female_lead.png',
         label: '🍦 Ice Cream Stand - She Returns',
         dialogue: [
             { speaker: '', text: "You go get some ice cream" },

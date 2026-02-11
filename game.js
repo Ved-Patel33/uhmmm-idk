@@ -22,6 +22,7 @@ class GameEngine {
     this.timeSkipOverlay = document.getElementById('time-skip-overlay');
     this.timeSkipText = document.getElementById('time-skip-text');
     this.endingScreen = document.getElementById('ending-screen');
+    this.characterLayer = document.getElementById('character-layer');
     this.hotspotsContainer = document.getElementById('hotspots-container');
 
     this.init();
@@ -77,6 +78,20 @@ class GameEngine {
     } else if (scene.background) {
       // Use image URL
       this.backgroundLayer.style.backgroundImage = `url('${scene.background}')`;
+    }
+
+    // Handle character display
+    if (scene.character) {
+      this.characterLayer.style.backgroundImage = `url('${scene.character}')`;
+      this.characterLayer.classList.remove('hidden');
+    } else {
+      this.characterLayer.classList.add('hidden');
+      // subtle delay to clear image after fade out, or just leave it hidden
+      setTimeout(() => {
+        if (this.characterLayer.classList.contains('hidden')) {
+          this.characterLayer.style.backgroundImage = '';
+        }
+      }, 600);
     }
 
     // Update scene indicator
